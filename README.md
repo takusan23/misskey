@@ -142,3 +142,31 @@ DONE *  [core boot]     Now listening on port 3000 on http://localhost:3000
     - git checkout takusan_23-diary
     - git rebase mei-m544
     - git push -f origin takusan_23-diary
+
+## 変更を本番に入れる（本番更新手順）
+
+- もし本家のバージョンが上がっていない場合は上げる
+    - `package.json`の`version`
+        - `rebase`したなりして、本家のバージョンアップに乗っかったらいらないはず
+- GitHub に push する
+- VPS に入る
+- Misskey を止める
+    - `sudo systemctl stop misskey`
+- なんかあったら怖いのでバックアップする
+    - `mongodump -o "./dump"`
+    - scp で 母艦に転送
+- ユーザーを切り替えて、`misskey`フォルダへ移動
+    - `sudo su - misskey`
+    - `cd ~/misskey`
+- ブランチが増えた場合は
+    - `git fetch`
+- 取り込む
+    - `git checkout takusan_23-diary`
+    - `git status`
+        - で今いるブランチが`takusan_23-diary`になっていること
+- ビルドする
+    - `NODE_ENV=production pnpm i`
+    - `NODE_ENV=production pnpm build`
+- 戻って Misskey 起動
+    - `exit`
+    - `sudo systemctl restart misskey`
