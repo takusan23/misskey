@@ -14,7 +14,7 @@ https://github.com/mei23/misskey
 # 開発者向け
 - mei-m544
     - 素敵な本家様ブランチ
-- diary-takusan_23
+- takusan_23-diary
     - ↑ をフォークしてチョットいじったもの
     - ↑ を rebase で追従する
 
@@ -131,3 +131,14 @@ DONE *  [core boot]     Now listening on port 3000 on http://localhost:3000
     - 開けるはず！おめでとう！
 
 ![Imgur](https://imgur.com/82TBoNP.png)
+
+## rebase して最新版に追従する
+
+- GitHub で Sync fork を押して取り込みます
+- 手元の環境を更新する
+    - git checkout mei-544
+    - git pull origin mei-m544
+- 私のブランチを rebase する
+    - git checkout takusan_23-diary
+    - git rebase mei-m544
+    - git push -f origin takusan_23-diary
