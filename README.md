@@ -4,7 +4,15 @@ https://github.com/mei23/misskey
 
 ## オリジナル要素
 
-// TODO
+- Koruri フォントを利用
+    - takusan.negitoro.dev でも使っている
+
+# 開発者向け
+- mei-m544
+    - 素敵な本家様ブランチ
+- diary-takusan_23
+    - ↑ をフォークしてチョットいじったもの
+    - ↑ を rebase で追従する
 
 ## 本番環境構築
 

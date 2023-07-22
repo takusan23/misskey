@@ -5,7 +5,7 @@
 	"codename": "m544",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/mei23/misskey.git"
+		"url": "https://github.com/takusan23/misskey.git"
 	},
 	"main": "./index.js",
 	"private": true,
@@ -22,7 +22,8 @@
 		"cleanall": "gulp cleanall",
 		"lint": "eslint src/**/*.ts",
 		"test": "cross-env TS_NODE_FILES=true TS_NODE_TRANSPILE_ONLY=true TS_NODE_PROJECT=\"./test/tsconfig.json\" mocha",
-		"format": "gulp format"
+		"format": "gulp format",
+		"dev": "webpack --watch"
 	},
 	"resolutions": {
 		"source-map": "^0.7.4"
