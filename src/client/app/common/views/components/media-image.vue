@@ -34,11 +34,14 @@ export default Vue.extend({
 	},
 	computed: {
 		style(): any {
-			let url = `url(${
-				this.$store.state.device.disableShowingAnimatedImages
-					? getStaticImageUrl(this.image.thumbnailUrl, this.image.type, this.image.animation)
-					: this.image.thumbnailUrl
-			})`;
+			// 独自実装のデータセーバー、画像をロードしない設定
+			const url = this.$store.state.settings.dataSaver 
+				? 'url(/assets/data-saver.svg)'
+				: `url(${
+					this.$store.state.device.disableShowingAnimatedImages
+						? getStaticImageUrl(this.image.thumbnailUrl, this.image.type, this.image.animation)
+						: this.image.thumbnailUrl
+				})`;
 
 			return {
 				'background-color': `var(--face)`,

@@ -117,6 +117,7 @@ common:
     default-note-visibility: "Visibilité par défaut"
     remember-note-visibility: "Se souvenir du mode de visibilité de la publication"
     show-via: "Afficher via"
+    data-saver: "Enable DataSaver, disable load image"
     reduce-motion: "Réduire les animations dans l’interface utilisateur"
     this-setting-is-this-device-only: "Uniquement sur cet appareil"
     font-size: "Taille du texte"

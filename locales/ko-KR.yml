@@ -130,6 +130,7 @@ common:
     always-mark-nsfw: "항상 미디어를 열람주의로 설정하여 게시"
     show-full-acct: "사용자명의 호스트를 표시하지 않기"
     show-via: "via 표시하기"
+    data-saver: "Enable DataSaver, disable load image"
     reduce-motion: "UI의 애니메이션 줄이기"
     this-setting-is-this-device-only: "이 장치만"
     font-size: "글씨 크기"

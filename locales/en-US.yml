@@ -290,6 +290,7 @@ common:
     always-mark-nsfw: "Mark as NSFW by default"
     show-full-acct: "Do not omit the hostname from the username"
     show-via: "Show via"
+    data-saver: "Enable DataSaver, disable load image"
     reduce-motion: "Reduce motion in UI"
     visibilityColoring: "Visibility coloring"
     visibilityColoring-none: "None"
