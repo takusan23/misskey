@@ -21,7 +21,7 @@ const defaultSettings = {
 	circleIcons: true,
 	showFullAcct: false,
 	showVia: true,
-	dataSaver: true, // 独自実装
+	dataSaver: false, // 独自実装
 	showReplyTarget: true,
 	showMyRenotes: true,
 	showRenotedMyNotes: true,
