@@ -6,6 +6,10 @@ https://github.com/mei23/misskey
 
 - Koruri フォントを利用
     - takusan.negitoro.dev でも使っている
+- データセーバーモード
+    - 単純に画像のリンクを data-saver.svg に置き換えているだけ
+    - あんまり意味ないかも
+        - ![Imgur](https://imgur.com/G8q3OHu.png)
 
 # 開発者向け
 - mei-m544

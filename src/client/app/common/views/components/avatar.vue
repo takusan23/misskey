@@ -66,7 +66,8 @@ export default Vue.extend({
 		icon(): any {
 			return {
 				backgroundColor: `rgba(128, 128, 128, 0.1)`,
-				backgroundImage: `url(${this.url})`,
+				// 独自実装のデータセーバー、画像をロードしない設定
+				backgroundImage: this.$store.state.settings.dataSaver ? 'url(/assets/data-saver.svg)' : `url(${this.url})`,
 				borderRadius: this.$store.state.settings.circleIcons ? '100%' : null
 			};
 		}

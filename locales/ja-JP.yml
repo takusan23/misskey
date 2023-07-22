@@ -304,6 +304,7 @@ common:
     always-mark-nsfw: "デフォルトでファイルを閲覧注意にする"
     show-full-acct: "ユーザー名のホストを省略しない"
     show-via: "viaを表示する"
+    data-saver: "通信料を抑えるため、画像をロードしない"
     reduce-motion: "UIの動きを減らす"
     visibilityColoring: "公開範囲の色付け"
     visibilityColoring-none: "しない"

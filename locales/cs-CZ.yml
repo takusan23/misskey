@@ -130,6 +130,7 @@ common:
     always-mark-nsfw: "Označovat všechny příspěvky za delikátní"
     show-full-acct: "Zaradit hostovací server jako součast přezdívky"
     show-via: "zobrazit přes"
+    data-saver: "Enable DataSaver, disable load image"
     reduce-motion: "Snížit pohyb v rozhraní"
     this-setting-is-this-device-only: "Pouze pro toto zařízení"
     font-size: "Velikost písma"
