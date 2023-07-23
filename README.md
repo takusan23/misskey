@@ -6,6 +6,7 @@ https://github.com/mei23/misskey
 
 - Koruri フォントを利用
     - takusan.negitoro.dev でも使っている
+    - https://github.com/Koruri/Koruri/blob/master/LICENSE
 - データセーバーモード
     - 単純に画像のリンクを data-saver.svg に置き換えているだけ
     - あんまり意味ないかも
