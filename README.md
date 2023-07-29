@@ -175,6 +175,7 @@ DONE *  [core boot]     Now listening on port 3000 on http://localhost:3000
     - `git checkout takusan_23-diary`
     - `git status`
         - で今いるブランチが`takusan_23-diary`になっていること
+    - `git pull origin takusan_23-diary`
 - ビルドする
     - `NODE_ENV=production pnpm i`
     - `NODE_ENV=production pnpm build`
