@@ -789,6 +789,7 @@ desktop/views/components/note.vue:
   detail: "상세"
   private: "이 글은 비공개입니다"
   deleted: "이 글은 삭제되었습니다"
+  remote: "Open remote server"
 desktop/views/components/notes.vue:
   error: "불러오지 못했습니다"
   retry: "재시도"

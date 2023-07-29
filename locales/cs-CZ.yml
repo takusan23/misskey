@@ -653,6 +653,7 @@ desktop/views/components/note.vue:
   detail: "Více"
   private: "Tento příspěvek je soukromý"
   deleted: "Tento příspěvek byl odstraněn"
+  remote: "Open remote server"
 desktop/views/components/notes.vue:
   error: "Načítání selhalo."
   retry: "Opakovat"

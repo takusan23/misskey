@@ -107,6 +107,12 @@
 				<button v-if="appearNote.myReaction != null" class="reactionButton reacted button" @click="undoReact(appearNote)" ref="reactButton" :title="$t('undo-reaction')">
 					<fa :icon="faLaugh"/>
 				</button>
+
+				<!-- リアクションの隣に投稿元で見るボタン（独自実装） url か uri があれば表示 -->
+				<button v-if="appearNote.url || appearNote.uri" @click="openRemote()" ref="openRemote" class="button" :title="$t('remote')">
+					<fa icon="external-link-square-alt"/>
+				</button>
+
 				<button @click="menu()" ref="menuButton" class="button">
 					<fa icon="ellipsis-h"/>
 				</button>

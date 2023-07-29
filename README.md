@@ -4,13 +4,17 @@ https://github.com/mei23/misskey
 
 ## オリジナル要素
 
-- Koruri フォントを利用
+- Koruri フォントを利用（2023/07/23 / 10.102.662-m544-2）
     - takusan.negitoro.dev でも使っている
     - https://github.com/Koruri/Koruri/blob/master/LICENSE
-- データセーバーモード
+- データセーバーモード（2023/07/23 / 10.102.662-m544-2）
     - 単純に画像のリンクを data-saver.svg に置き換えているだけ
     - あんまり意味ないかも
         - ![Imgur](https://imgur.com/G8q3OHu.png)
+- 投稿元で見るボタン（2023/07/30 / 10.102.662-m544-3）
+    - お一人様サーバーに住んでいる以上、自分以外はすべて他のサーバーの投稿なので、リアクションとか見たい時に使う
+        - わざわざメニュー開いて押すのめんどい
+        - ![Imgur](https://imgur.com/A4hRRyP.png)
 
 # 開発者向け
 - mei-m544
@@ -133,16 +137,22 @@ DONE *  [core boot]     Now listening on port 3000 on http://localhost:3000
 
 ![Imgur](https://imgur.com/82TBoNP.png)
 
+### 開発の知見
+- `pnpm build && pnpm start`だと、毎回全部ビルドしてしまいおっそい
+    - `webpack --watch`をして変更時に自動で差分ビルドするようにする（差分なので変更なければスキップ）
+    - 差分ビルドが終わったら`pnpm start`する
+    - ![Imgur](https://imgur.com/9FnvsUU.png)
+
 ## rebase して最新版に追従する
 
 - GitHub で Sync fork を押して取り込みます
 - 手元の環境を更新する
-    - git checkout mei-544
-    - git pull origin mei-m544
+    - `git checkout mei-544`
+    - `git pull origin mei-m544`
 - 私のブランチを rebase する
-    - git checkout takusan_23-diary
-    - git rebase mei-m544
-    - git push -f origin takusan_23-diary
+    - `git checkout takusan_23-diary`
+    - `git rebase mei-m544`
+    - `git push -f origin takusan_23-diary`
 
 ## 変更を本番に入れる（本番更新手順）
 

@@ -723,6 +723,7 @@ desktop/views/components/note.vue:
   detail: "Détails"
   private: "Cette publication est privée"
   deleted: "Cette publication a été supprimée"
+  remote: "Open remote server"
 desktop/views/components/notes.vue:
   error: "Échec du chargement."
   retry: "Réessayer"

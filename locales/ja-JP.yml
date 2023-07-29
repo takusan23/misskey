@@ -1268,6 +1268,7 @@ desktop/views/components/note.vue:
   detail: "詳細"
   private: "この投稿は非公開です"
   deleted: "この投稿は削除されました"
+  remote: "投稿元で見る"
 
 desktop/views/components/notes.vue:
   error: "読み込みに失敗しました。"
