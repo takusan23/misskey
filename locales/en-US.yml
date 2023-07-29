@@ -1164,6 +1164,7 @@ desktop/views/components/note.vue:
   detail: "Details"
   private: "This post is private"
   deleted: "This post has been deleted"
+  remote: "Open remote server"
 desktop/views/components/notes.vue:
   error: "Loading failed."
   retry: "Retry"

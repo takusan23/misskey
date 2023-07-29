@@ -238,6 +238,15 @@ export default (opts: Opts = {}) => ({
 			});
 		},
 
+		// リアクションの隣に投稿元で見るボタンを押したら呼ばれる（独自実装）
+		openRemote() {
+			// リモートの URL を取得
+			const remoteUrl = this.appearNote.url || this.appearNote.uri
+			if (remoteUrl) {
+				window.open(remoteUrl, '_blank');
+			}
+		},
+
 		menu(viaKeyboard = false) {
 			if (!this.$store.getters.isSignedIn) {
 				this.$root.dialog({ type: 'info', text: this.$t('@.signinOrUsePostUrl') });

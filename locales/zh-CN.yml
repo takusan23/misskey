@@ -803,6 +803,7 @@ desktop/views/components/note.vue:
   detail: "详细信息"
   private: "这个投稿是私密的"
   deleted: "投稿已删除"
+  remote: "Open remote server"
 desktop/views/components/notes.vue:
   error: "加载失败。"
   retry: "重试"
