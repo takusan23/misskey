@@ -8,6 +8,10 @@ import config from '../config';
 import { checkPrivateIp } from './check-private-ip';
 import { checkAllowedUrl } from './check-allowed-url';
 
+// WebFinger のリクエストに失敗するので調査のためログを出す
+import Logger from '../services/logger';
+const fetchLogger = new Logger('fetch', 'cyan');
+
 export async function getJson(url: string, accept = 'application/json, */*', timeout = 10000, headers?: Record<string, string>): Promise<any> {
 	const res = await getResponse({
 		url,
@@ -21,7 +25,7 @@ export async function getJson(url: string, accept = 'application/json, */*', tim
 
 	if (res.body.length > 65536) throw new Error('too large JSON');
 
-	return await JSON.parse(res.body); 
+	return await JSON.parse(res.body);
 }
 
 export async function getHtml(url: string, accept = 'text/html, */*', timeout = 10000, headers?: Record<string, string>): Promise<string> {
@@ -71,6 +75,13 @@ export async function getResponse(args: { url: string, method: 'GET' | 'POST', b
 		retry: 0,
 	});
 
+	// WebFinger のリクエストに失敗するので調査のためログを出す
+	if (args.url.includes('webfinger')) {
+		fetchLogger.info('WebFinger Request Log');
+		fetchLogger.info('Request Header');
+		fetchLogger.info(JSON.stringify(args));
+	}
+
 	req.on('redirect', (res, opts) => {
 		if (!checkAllowedUrl(opts.url)) {
 			req.cancel(`Invalid url: ${opts.url}`);
@@ -112,6 +123,16 @@ async function receiveResponce<T>(req: Got.CancelableRequest<Got.Response<T>>, m
 
 	// 応答取得 with ステータスコードエラーの整形
 	const res = await req.catch(e => {
+
+		// WebFinger のリクエストに失敗するので調査のためログを出す
+		if (e.response.url.includes('webfinger')) {
+			fetchLogger.error('HTTP Error');
+			fetchLogger.error('Response Header');
+			fetchLogger.error(JSON.stringify(e.response.headers));
+			fetchLogger.error('Response Body');
+			fetchLogger.error(JSON.stringify(e.response.body));
+		}
+
 		if (e instanceof Got.HTTPError) {
 			throw new StatusError(`${e.response.statusCode} ${e.response.statusMessage}`, e.response.statusCode, e.response.statusMessage);
 		} else {
