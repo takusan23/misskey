@@ -38,7 +38,6 @@
 				<ui-switch v-model="showFullAcct" v-if="isAdvanced">{{ $t('@._settings.show-full-acct') }}</ui-switch>
 				<ui-switch v-model="showVia">{{ $t('@._settings.show-via') }}</ui-switch>
 				<ui-switch v-model="iLikeSushi">{{ $t('@._settings.i-like-sushi') }}</ui-switch>
-				<ui-switch v-model="dataSaver">{{ $t('@._settings.data-saver') }}</ui-switch>
 			</section>
 			<section>
 				<ui-switch v-model="suggestRecentHashtags" v-if="isAdvanced">{{ $t('@._settings.suggest-recent-hashtags') }}</ui-switch>
@@ -50,6 +49,7 @@
 				<ui-switch v-model="disableShowingAnimatedImages">{{ $t('@._settings.disable-showing-animated-images') }}</ui-switch>
 				<ui-switch v-model="showInstanceInfo">{{ $t('@._settings.showInstanceInfo') }}</ui-switch>
 				<ui-switch v-model="showTlPin">{{ $t('@._settings.showTlPin') }}</ui-switch>
+				<ui-switch v-model="dataSaver">{{ $t('@._settings.data-saver') }}</ui-switch>
 			</section>
 			<section>
 				<header>{{ $t('@._settings.font-size') }}</header>
@@ -592,11 +592,6 @@ export default Vue.extend({
 			set(value) { this.$store.dispatch('settings/set', { key: 'showVia', value }); }
 		},
 
-		dataSaver:{
-			get() { return this.$store.state.settings.dataSaver; },
-			set(value) { this.$store.dispatch('settings/set', { key: 'dataSaver', value }); }
-		},
-
 		iLikeSushi: {
 			get() { return this.$store.state.settings.iLikeSushi; },
 			set(value) { this.$store.dispatch('settings/set', { key: 'iLikeSushi', value }); }
@@ -661,6 +656,11 @@ export default Vue.extend({
 		showTlPin: {
 			get() { return !!this.$store.state.device.showTlPin; },
 			set(value) { this.$store.commit('device/set', { key: 'showTlPin', value }); }
+		},
+
+		dataSaver:{
+			get() { return !!this.$store.state.device.dataSaver; },
+			set(value) { this.$store.commit('device/set', { key: 'dataSaver', value }); }
 		},
 
 		enableKeyboardShortcutInNote: {

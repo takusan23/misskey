@@ -35,7 +35,7 @@ export default Vue.extend({
 	computed: {
 		style(): any {
 			// 独自実装のデータセーバー、画像をロードしない設定
-			const url = this.$store.state.settings.dataSaver 
+			const url = !!this.$store.state.device.dataSaver 
 				? 'url(/assets/data-saver.svg)'
 				: `url(${
 					this.$store.state.device.disableShowingAnimatedImages

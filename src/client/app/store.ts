@@ -21,7 +21,6 @@ const defaultSettings = {
 	circleIcons: true,
 	showFullAcct: false,
 	showVia: true,
-	dataSaver: false, // 独自実装
 	showReplyTarget: true,
 	showMyRenotes: true,
 	showRenotedMyNotes: true,
@@ -79,6 +78,7 @@ const defaultDeviceSettings = Object.assign({
 	disableShowingAnimatedImages: true,
 	showInstanceInfo: false,
 	showTlPin: false,
+	dataSaver: false, // 独自実装
 	enableKeyboardShortcutInNote: false,
 	expandUsersPhotos: true,
 	expandUsersWarp: false,
