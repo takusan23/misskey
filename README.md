@@ -27,10 +27,12 @@ https://github.com/mei23/misskey
 ## 本番環境構築
 
 ## Setup?
-簡単なセットアップ方法はこの辺  
-https://github.com/mei23/memo/blob/master/misskey/Setup-Meisskey-Quick.md
-
-Cloudflare を利用しない場合は DNS サーバーに A レコード追加、Let's Encrypt の nginx モードで SSL 証明書生成が必要です。
+- めいめいさんのセットアップ
+    - https://github.com/mei23/memo/blob/master/misskey/Setup-Meisskey-Quick.md
+- わたし用
+    - https://takusan.negitoro.dev/posts/misskey_ohitorisama/
+    - 私の環境では、`Ubuntu 22.04`、`Node.js 18`でないと、一部のインスタンスと通信できなかったため、もし何かあれば試してみてください。
+        - https://takusan.negitoro.dev/posts/curl_successful_httpclient_error/
 
 ## Vulnerabilities?
 脆弱性を見つけたらこちら  
@@ -147,6 +149,7 @@ DONE *  [core boot]     Now listening on port 3000 on http://localhost:3000
 ## rebase して最新版に追従する
 
 - GitHub で Sync fork を押して取り込みます
+    - ![Imgur](https://imgur.com/V7zZ4MS.png)
 - 手元の環境を更新する
     - `git checkout mei-544`
     - `git pull origin mei-m544`
