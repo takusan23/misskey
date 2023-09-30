@@ -119,11 +119,13 @@ export default Vue.extend({
 					action: this.edit
 				});
 
-				it.push({
-					icon: faEdit,
-					text: this.$t('@.edit2'),
-					action: this.edit2
-				});
+				if (this.note.localOnly) {
+					it.push({
+						icon: faEdit,
+						text: this.$t('@.edit2'),
+						action: this.edit2
+					});
+				}
 			}
 
 			// 削除
@@ -263,18 +265,18 @@ export default Vue.extend({
 		},
 
 		edit2() {
-			this.$root.dialog({
-				type: 'warning',
-				text: this.$t('edit2-confirm'),
-				showCancelButton: true
-			}).then(({ canceled }) => {
-				if (canceled) return;
+			//this.$root.dialog({
+			//	type: 'warning',
+			//	text: this.$t('edit2-confirm'),
+			//	showCancelButton: true
+			//}).then(({ canceled }) => {
+			//	if (canceled) return;
 				this.$post({
-				initialNote: Object.assign({ }, this.note),
-				reply: this.note.reply,
-				updateMode: true,
-			});
-			});
+					initialNote: Object.assign({ }, this.note),
+					reply: this.note.reply,
+					updateMode: true,
+				});
+			//});
 		},
 
 		toggleFavorite(favorite: boolean) {
