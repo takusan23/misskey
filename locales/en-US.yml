@@ -494,7 +494,7 @@ common/views/pages/about.vue:
   about: "About {host}"
   basic: "Basic"
   maintainerName: "Administrator"
-  maintainerEmail: "Contanct"
+  maintainerEmail: "Contact"
   stats: "Statistics"
   users: "Users"
   notes: "Posts"
