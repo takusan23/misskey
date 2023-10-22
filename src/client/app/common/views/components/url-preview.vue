@@ -109,7 +109,7 @@ export default Vue.extend({
 	},
 
 	created() {
-		const requestUrl = new URL(this.url);
+		let requestUrl = new URL(this.url);
 
 		if (this.isBlokedUrl(requestUrl)) {
 			return;
@@ -132,6 +132,14 @@ export default Vue.extend({
 			const mUser = requestUrl.pathname.match(/^\/(\w+)/);
 			if (mUser) {
 				this.twitterUser = mUser[1];
+			}
+		}
+
+		// Alt YouTube
+		if (this.$store.state.device.altYoutube) {
+			if (requestUrl.hostname === 'www.youtube.com' || requestUrl.hostname === 'm.youtube.com' || requestUrl.hostname === 'youtu.be') {
+				const youtubePath = `${requestUrl.pathname}${requestUrl.search}`;
+				requestUrl = new URL(`https://${this.$store.state.device.altYoutube}${youtubePath}`);
 			}
 		}
 
