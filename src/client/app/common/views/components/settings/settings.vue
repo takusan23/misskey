@@ -205,7 +205,7 @@
 				</ui-select>
 
 				<header>{{ $t('@._settings.nitter') }}</header>
-				<ui-input v-model="nitter">
+				<ui-input v-model="nitter" :debounce="true">
 				</ui-input>
 			</section>
 
@@ -589,7 +589,10 @@ export default Vue.extend({
 
 		nitter: {
 			get() { return this.$store.state.device.nitter; },
-			set(value: string) { this.$store.commit('device/set', { key: 'nitter', value: value.trim() }); }
+			set(value: string) {
+				this.$store.commit('device/set', { key: 'nitter', value: value.trim() });
+				this.$notify(this.$t('@._settings.saved'));
+			}
 		},
 
 		roomUseOrthographicCamera: {
