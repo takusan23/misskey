@@ -145,9 +145,13 @@ DONE *  [core boot]     Now listening on port 3000 on http://localhost:3000
     - `webpack --watch`をして変更時に自動で差分ビルドするようにする（差分なので変更なければスキップ）
     - 差分ビルドが終わったら`pnpm start`する
     - ![Imgur](https://imgur.com/9FnvsUU.png)
+- `MongoDB`が起動していない
+    - `Windows`の`タスクマネージャー`の`サービス`から`MongoDB`を見つけて右クリックして開始を押す
 
 ## rebase して最新版に追従する
 
+- 本家のブランチに切り替える
+    - ![Imgur](https://imgur.com/3Gy0Yg3.png)
 - GitHub で Sync fork を押して取り込みます
     - ![Imgur](https://imgur.com/V7zZ4MS.png)
 - 手元の環境を更新する
@@ -173,13 +177,15 @@ DONE *  [core boot]     Now listening on port 3000 on http://localhost:3000
 - ユーザーを切り替えて、`misskey`フォルダへ移動
     - `sudo su - misskey`
     - `cd ~/misskey`
-- ブランチが増えた場合は
-    - `git fetch`
 - 取り込む
     - `git checkout takusan_23-diary`
     - `git status`
         - で今いるブランチが`takusan_23-diary`になっていること
     - `git pull origin takusan_23-diary`
+        - もしなんとかとか言われたら、ローカルのブランチを一旦消すといいかも（よくわからない）
+            - `git checkout mei-m544`
+            - `git branch -D takusan23-diary`
+            - `git checkout takusan23-diary`
 - ビルドする
     - `NODE_ENV=production pnpm i`
     - `NODE_ENV=production pnpm build`
