@@ -41,6 +41,11 @@ const router = new Router();
 async function inbox(ctx: Router.RouterContext) {
 	if (config.disableFederation) ctx.throw(404);
 
+	if (ctx.req.headers.host !== config.host) {
+		ctx.status = 400;
+		return;
+	}
+
 	// parse body
 	const { parsed, raw } = await coBody.json(ctx, {
 		limit: '64kb',
