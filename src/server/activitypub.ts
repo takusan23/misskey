@@ -85,7 +85,7 @@ async function inbox(ctx: Router.RouterContext) {
 		return;
 	}
 
-	const digestActual = crypto.createHash('sha256').update(raw).digest('base64')
+	const digestActual = crypto.createHash('sha256').update(raw).digest('base64');
 
 	if (digestExpected !== digestActual) {
 		logger.warn(`inbox: digest missmatch`);
