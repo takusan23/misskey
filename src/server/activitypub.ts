@@ -62,6 +62,12 @@ async function inbox(ctx: Router.RouterContext) {
 	} catch (e) {
 		logger.warn(`inbox: signature parse error: ${inspect(e)}`);
 		ctx.status = 401;
+
+		if (e instanceof Error) {
+			if (e.name === 'ExpiredRequestError') ctx.message = 'Expired Request Error';
+			if (e.name === 'MissingHeaderError') ctx.message = 'Missing Required Header';
+		}
+
 		return;
 	}
 

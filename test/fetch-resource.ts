@@ -584,7 +584,7 @@ describe('Fetch resource', () => {
 				url: myInbox,
 				body,
 				additionalHeaders: {
-					Host: xHost,	// ★
+					Host: xHost,	// ★署名されているが違うホスト向け
 				},
 			});
 		
@@ -595,7 +595,7 @@ describe('Fetch resource', () => {
 		});
 
 		it('Payload Too Large', async () => {
-			const object = { a: 1, b: 'x'.repeat(70000), };	// ★
+			const object = { a: 1, b: 'x'.repeat(70000), };	// ★でかすぎ
 			const body = JSON.stringify(object);
 
 			const req = createSignedPost({
@@ -612,7 +612,7 @@ describe('Fetch resource', () => {
 			assert.strictEqual(res.statusCode, 413);
 		});
 
-		it('Signature Header Required', async () => {
+		it('Missing Required Header in the request - signature', async () => {
 			const object = { a: 1, b: 2, };
 			const body = JSON.stringify(object);
 
@@ -625,15 +625,15 @@ describe('Fetch resource', () => {
 				},
 			});
 
-			delete req.request.headers.signature;	// ★
+			delete req.request.headers.signature;	// ★署名されてない
 
 			const res = await inboxPost(myInbox, req.request.headers, body);
 
 			assert.strictEqual(res.statusCode, 401);
-			//assert.strictEqual(res.statusMessage, 'Signature Header Required');
+			assert.strictEqual(res.statusMessage, 'Missing Required Header');	// TODO: どのheaderがどこに足りないのか
 		});
 
-		it('Digest Header Required', async () => {
+		it('Missing Required Header in the request - digest', async () => {
 			const object = { a: 1, b: 2, };
 			const body = JSON.stringify(object);
 
@@ -646,13 +646,35 @@ describe('Fetch resource', () => {
 				},
 			});
 
-			delete req.request.headers.digest;	// ★
+			delete req.request.headers.digest;	// ★署名されているがrequestにDigestヘッダーがない
 
 			const res = await inboxPost(myInbox, req.request.headers, body);
 
 			assert.strictEqual(res.statusCode, 401);
-			//assert.strictEqual(res.statusMessage, 'Digest Header Required');
+			assert.strictEqual(res.statusMessage, 'Missing Required Header');	// TODO: どのheaderがどこに足りないのか
 		});
+
+		it('Expired Request Error', async () => {
+			const object = { a: 1, b: 2, };
+			const body = JSON.stringify(object);
+
+			const req = createSignedPost({
+				key,
+				url: myInbox,
+				body,
+				additionalHeaders: {
+					Host: myHost,
+					Date: new Date(new Date().getTime() - 600 * 1000).toISOString(),	// ★署名されてるがDateが古すぎる
+				},
+			});
+		
+			const res = await inboxPost(myInbox, req.request.headers, body);
+
+			assert.strictEqual(res.statusCode, 401);
+			assert.strictEqual(res.statusMessage, 'Expired Request Error');
+		});
+
+		// TODO: signatureの方に必須ヘッダーがないパターン
 
 		it('Invalid Digest Header', async () => {
 			const object = { a: 1, b: 2, };
@@ -709,7 +731,7 @@ describe('Fetch resource', () => {
 				},
 			});
 		
-			req.request.headers.digest = `SHA-256=${crypto.createHash('sha256').update('puppukupu-').digest('base64')}`;
+			req.request.headers.digest = `SHA-256=${crypto.createHash('sha256').update('puppukupu-').digest('base64')}`;	// ★
 
 			const res = await inboxPost(myInbox, req.request.headers, body);
 
