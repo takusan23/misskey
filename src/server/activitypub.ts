@@ -28,7 +28,8 @@ import { toUnicode } from 'punycode/';
 import Logger from '../services/logger';
 import limiter from './api/limiter';
 import { IEndpoint } from './api/endpoints';
-import { IActivity, getApId, isDelete, isLike, isUndo } from '../remote/activitypub/type';
+import { IActivity, getApId } from '../remote/activitypub/type';
+import { toSingle } from '../prelude/array';
 
 const logger = new Logger('activitypub');
 
@@ -148,7 +149,7 @@ async function inbox(ctx: Router.RouterContext) {
 	let lazy = false;
 
 	// MassDel
-	if (actor && (isDelete(activity) || isUndo(activity))) {
+	if (actor && ['Delete', 'Undo'].includes(toSingle(activity.type)!)) {
 		const ep = {
 			name: `inboxDeletex60-${actor}`,
 			exec: null,
@@ -173,7 +174,7 @@ async function inbox(ctx: Router.RouterContext) {
 	}
 
 	// ForeignLike
-	if (isLike(activity)) {
+	if (['Like', 'Dislike', 'EmojiReaction', 'EmojiReact'].includes(toSingle(activity.type)!)) {
 		let targetHost: string;
 		try {
 			targetHost = new URL(getApId(activity.object)).hostname.toLowerCase();
