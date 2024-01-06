@@ -28,8 +28,7 @@ import { toUnicode } from 'punycode/';
 import Logger from '../services/logger';
 import limiter from './api/limiter';
 import { IEndpoint } from './api/endpoints';
-import { IActivity, getApId } from '../remote/activitypub/type';
-import { toSingle } from '../prelude/array';
+import { IActivity, getApId, isDelete, isLike, isUndo } from '../remote/activitypub/type';
 
 const logger = new Logger('activitypub');
 
@@ -148,7 +147,8 @@ async function inbox(ctx: Router.RouterContext) {
 
 	let lazy = false;
 
-	if (actor && ['Delete', 'Undo'].includes(toSingle(activity.type)!)) {
+	// MassDel
+	if (actor && (isDelete(activity) || isUndo(activity))) {
 		const ep = {
 			name: `inboxDeletex60-${actor}`,
 			exec: null,
@@ -173,8 +173,14 @@ async function inbox(ctx: Router.RouterContext) {
 	}
 
 	// ForeignLike
-	if (toSingle(activity.type) === 'Like') {
-		const targetHost = new URL(getApId(activity.object)).hostname.toLowerCase();
+	if (isLike(activity)) {
+		let targetHost: string;
+		try {
+			targetHost = new URL(getApId(activity.object)).hostname.toLowerCase();
+		} catch {
+			ctx.status = 400;
+			return;
+		}
 		if (targetHost !== config.host) {
 			if (config.inboxForeignLikeOpeMode === 'ignore') {
 				ctx.status = 202;
