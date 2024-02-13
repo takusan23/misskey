@@ -21,7 +21,6 @@ pnpm start
 `package.json`の`version`を変更する必要があります。
 
 ソースコードの公開URLは、[src/const.json](../src/const.json) の `repositoryUrl` に設定することが出来ます。  
-※ `src/const.json` の `copyright` は、旧Misskey部分のコードからしか参照されてないため、変更しても意味ないですし変更するべきではありません。
 
 ### ローカルでテストを動かす方法
 ```
