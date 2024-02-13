@@ -1,6 +1,5 @@
 declare const _LANGS_: string[];
 declare const _CONSTANTS_: {
-	copyright: string
 	repositoryUrl: string;
 	feedbackUrl: string;
 };
