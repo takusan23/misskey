@@ -195,7 +195,7 @@ export const meta = {
 		maintainerEmail: {
 			validator: $.optional.nullable.str,
 			desc: {
-				'ja-JP': 'インスタンス管理者の連絡先メールアドレス'
+				'ja-JP': 'インスタンス管理者の連絡先'
 			}
 		},
 
