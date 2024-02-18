@@ -184,8 +184,8 @@ DONE *  [core boot]     Now listening on port 3000 on http://localhost:3000
     - `git pull origin takusan_23-diary`
         - もしなんとかとか言われたら、ローカルのブランチを一旦消すといいかも（よくわからない）
             - `git checkout mei-m544`
-            - `git branch -D takusan23-diary`
-            - `git checkout takusan23-diary`
+            - `git branch -D takusan_23-diary`
+            - `git checkout takusan_23-diary`
 - ビルドする
     - `NODE_ENV=production pnpm i`
     - `NODE_ENV=production pnpm build`
