@@ -5,7 +5,7 @@ import Message from '../../../../models/messaging-message';
 import { doPostSuspend } from '../../../../services/suspend-user';
 import { createDeleteNotesJob, createDeleteDriveFilesJob } from '../../../../queue';
 import { toDbHost } from '../../../../misc/convert-host';
-import Instance from '../../../../models/instance';
+import { isBlockedHost, isClosedHost } from '../../../../services/instance-moderation';
 
 export const meta = {
 	desc: {
@@ -37,12 +37,7 @@ export const meta = {
 export default define(meta, async (ps) => {
 	const host = toDbHost(ps.host);
 
-	const instance = await Instance.findOne({
-		host
-	});
-
-	if (instance == null) throw 'instance not found';
-	if (!instance.isBlocked && !instance.isMarkedAsClosed) throw 'instance はブロックでもクローズでもない';
+	if (!await isBlockedHost(host) && !await isClosedHost(host)) throw new Error('instance はブロックでもクローズでもない');
 
 	const users = await User.find({
 		host,
