@@ -66,7 +66,7 @@ export const meta = {
 		},
 
 		blocked: {
-			message: 'You are blocked by that user.',
+			message: 'This account cannot be followed.',
 			code: 'BLOCKED',
 			id: 'c4ab57cc-4e41-45e9-bfd9-584f61e35ce0'
 		},
@@ -119,6 +119,7 @@ export default define(meta, async (ps, user) => {
 		if (e instanceof FollowingError) {
 			if (e.type === 'blocking') throw new ApiError(meta.errors.blocking);
 			if (e.type === 'blocked') throw new ApiError(meta.errors.blocked);
+
 		}
 		throw e;
 	}
