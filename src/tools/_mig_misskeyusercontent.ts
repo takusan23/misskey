@@ -51,7 +51,7 @@ async function main() {
 					'metadata.webpublicUrl': replaceUrl(file.metadata?.webpublicUrl),
 				};
 
-				console.log(set);
+				//console.log(set);
 
 				await DriveFile.update(file._id, {
 					$set: set,
