@@ -430,7 +430,7 @@
   {"category":"people","char":"👨‍👧‍👦","name":"family_man_girl_boy","keywords":[],"v":"g"},
   {"category":"people","char":"👨‍👧‍👧","name":"family_man_girl_girl","keywords":[],"v":"g"},
   {"category":"people","char":"👨‍👦‍👦","name":"family_man_boy_boy","keywords":[],"v":"g"},
-  {"category":"people","char":"🧑‍🧑‍🧒","name":"family_adult_adult_child","keywords":[],"v":"g"},
+  {"category":"people","char":"🧑‍🧑‍🧒","name":"family_adult_adult_child","keywords":[]},
   {"category":"people","char":"🧑‍🧑‍🧒‍🧒","name":"family_adult_adult_child_child","keywords":[]},
   {"category":"people","char":"🧑‍🧒","name":"family_adult_child","keywords":[]},
   {"category":"people","char":"🧑‍🧒‍🧒","name":"family_adult_child_child","keywords":[]},
