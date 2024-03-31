@@ -497,8 +497,8 @@ devDependencies:
     specifier: 4.3.12
     version: 4.3.12
   '@types/koa-favicon':
-    specifier: 2.0.21
-    version: 2.0.21
+    specifier: 2.1.3
+    version: 2.1.3
   '@types/koa-logger':
     specifier: 3.1.5
     version: 3.1.5
@@ -521,8 +521,8 @@ devDependencies:
     specifier: 8.0.11
     version: 8.0.11
   '@types/lodash':
-    specifier: 4.14.202
-    version: 4.14.202
+    specifier: 4.17.0
+    version: 4.17.0
   '@types/mocha':
     specifier: 10.0.6
     version: 10.0.6
@@ -578,14 +578,14 @@ devDependencies:
     specifier: 0.31.1
     version: 0.31.1
   '@types/showdown':
-    specifier: 2.0.1
-    version: 2.0.1
+    specifier: 2.0.6
+    version: 2.0.6
   '@types/speakeasy':
-    specifier: 2.0.7
-    version: 2.0.7
+    specifier: 2.0.10
+    version: 2.0.10
   '@types/suncalc':
-    specifier: 1.9.0
-    version: 1.9.0
+    specifier: 1.9.2
+    version: 1.9.2
   '@types/tinycolor2':
     specifier: 1.4.3
     version: 1.4.3
@@ -2579,8 +2579,8 @@ packages:
     dependencies:
       '@types/koa': 2.13.8
 
-  /@types/koa-favicon@2.0.21:
-    resolution: {integrity: sha512-paH1nheVhijx/VduoR/RCD/qTCiX+OI/6fHLi3mZae053Ts+gUBOrKtzl3pMTDbdEBqdLolfLje3PZbb6jW0jQ==}
+  /@types/koa-favicon@2.1.3:
+    resolution: {integrity: sha512-L1XAF8k1iOuh3hA/ZjEqWURm9/62a8A1x7BZR9ZCMw8nbnUBt6oZksz2rfKRCEwESqI2e6WVGlF03fs9DbQQXQ==}
     dependencies:
       '@types/koa': 2.13.8
     dev: true
@@ -2639,8 +2639,8 @@ packages:
       '@types/koa': 2.13.8
     dev: true
 
-  /@types/lodash@4.14.202:
-    resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
+  /@types/lodash@4.17.0:
+    resolution: {integrity: sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==}
     dev: true
 
   /@types/mime@3.0.1:
@@ -2775,18 +2775,18 @@ packages:
       '@types/node': 18.11.18
     dev: true
 
-  /@types/showdown@2.0.1:
-    resolution: {integrity: sha512-xdnAw2nFqomkaL0QdtEk0t7yz26UkaVPl4v1pYJvtE1T0fmfQEH3JaxErEhGByEAl3zUZrkNBlneuJp0WJGqEA==}
+  /@types/showdown@2.0.6:
+    resolution: {integrity: sha512-pTvD/0CIeqe4x23+YJWlX2gArHa8G0J0Oh6GKaVXV7TAeickpkkZiNOgFcFcmLQ5lB/K0qBJL1FtRYltBfbGCQ==}
     dev: true
 
-  /@types/speakeasy@2.0.7:
-    resolution: {integrity: sha512-JEcOhN2SQCoX86ZfiZEe8px84sVJtivBXMZfOVyARTYEj0hrwwbj1nF0FwEL3nJSoEV6uTbcdLllMKBgAYHWCQ==}
+  /@types/speakeasy@2.0.10:
+    resolution: {integrity: sha512-QVRlDW5r4yl7p7xkNIbAIC/JtyOcClDIIdKfuG7PWdDT1MmyhtXSANsildohy0K+Lmvf/9RUtLbNLMacvrVwxA==}
     dependencies:
       '@types/node': 18.11.18
     dev: true
 
-  /@types/suncalc@1.9.0:
-    resolution: {integrity: sha512-+c2wOhgyG5ZTtxfC8XG5SGY36HNlXYaPqv/mqBbjXn3iKWx0Lj375AShoKbjF1MCGoXFhSl3jLlmxTksjaGyZQ==}
+  /@types/suncalc@1.9.2:
+    resolution: {integrity: sha512-ATAGBHHfA1TlE2tjfidLyTcysjoT2JHHEAmWRULh73SU9UTn++j5fqHEW16X6Y/2Li87jEQXzgu4R/OOdlDqzw==}
     dev: true
 
   /@types/tinycolor2@1.4.3:
