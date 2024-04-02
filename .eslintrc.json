@@ -21,6 +21,7 @@
 		"n/prefer-global/process": "error",
 		"n/prefer-promises/fs": "error",
 		"n/prefer-promises/dns": "error",
+		"n/no-process-exit": "off",
 		"no-process-exit": "off",
 		"no-constant-condition": ["warn", { "checkLoops": false }],
 		"no-empty": ["warn", { "allowEmptyCatch": true }],
