@@ -111,9 +111,9 @@ export default class DeliverManager {
 						users: {
 							$addToSet: {
 								id: '$followerId',
-								inbox: '$_follower.inbox'
+								inbox: '$_follower.inbox',
 							}
-						}
+						},
 					}
 				},
 				{
@@ -124,11 +124,11 @@ export default class DeliverManager {
 					}
 				}
 			]) as {
-				sharedInbox: string | null,
+				sharedInbox: string | null;
 				users: {
-					id: mongo.ObjectID,
-					inbox: string | null
-				}[]
+					id: mongo.ObjectID;
+					inbox: string | null;
+				}[];
 			}[];
 
 			for (const target of targets) {
