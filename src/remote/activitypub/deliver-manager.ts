@@ -177,12 +177,13 @@ export default class DeliverManager {
 
 				if (await isSelfSilencedHost(host)) {
 					const act = publicToHome(this.activity, this.actor); 
-					deliver(this.actor, act, inbox.url, lowSeverity, inbox);
+					await deliver(this.actor, act, inbox.url, lowSeverity, inbox);
 				} else {
-					deliver(this.actor, this.activity, inbox.url, lowSeverity, inbox);
+					await deliver(this.actor, this.activity, inbox.url, lowSeverity, inbox);
 				}
-
-			} catch { }
+			} catch (e) {
+				console.warn(`deliver failed ${e}`);
+			}
 		}
 	}
 }

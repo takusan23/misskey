@@ -86,7 +86,11 @@ export async function sendDeleteActivity(user: IUser) {
 		]) as { _id: string }[];
 
 		for (const inbox of results.map(x => x._id)) {
-			deliver(user as any, content, inbox);
+			try {
+				await deliver(user as any, content, inbox);
+			} catch (e) {
+				console.warn(`deliver failed ${e}`);
+			}
 		}
 	}
 }
