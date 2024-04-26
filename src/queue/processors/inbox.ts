@@ -37,7 +37,7 @@ type ApContext = {
 
 export const tryProcessInbox = async (data: InboxJobData, ctx?: ApContext): Promise<string> => {
 	const signature = data.signature;
-	const activity = data.activity;
+	let activity = data.activity;
 
 	const resolver = ctx?.resolver || new Resolver();
 
@@ -121,6 +121,11 @@ export const tryProcessInbox = async (data: InboxJobData, ctx?: ApContext): Prom
 			if (await isBlockedHost(ldHost)) {
 				return `skip: Blocked instance: ${ldHost}`;
 			}
+
+			const activity2 = JSON.parse(JSON.stringify(activity));
+			delete activity2.signature;
+			const compacted = await ldSignature.compact(activity2);
+			activity = compacted as any;
 		} else {
 			return `skip: http-signature verification failed and ${config.ignoreApForwarded ? 'ignoreApForwarded' : 'no LD-Signature'}. keyId=${signature.keyId}`;
 		}
