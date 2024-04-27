@@ -22,6 +22,7 @@ import resolveUser from '../../remote/resolve-user';
 import config from '../../config';
 import { publishInstanceModUpdated } from '../../services/server-event';
 import { StatusError } from '../../misc/fetch';
+import { FIXED_CONTEXT } from '../../remote/activitypub/misc/contexts';
 
 const logger = new Logger('inbox');
 
@@ -124,7 +125,7 @@ export const tryProcessInbox = async (data: InboxJobData, ctx?: ApContext): Prom
 
 			const activity2 = JSON.parse(JSON.stringify(activity));
 			delete activity2.signature;
-			const compacted = await ldSignature.compact(activity2);
+			const compacted = await ldSignature.compact(activity2, FIXED_CONTEXT);
 			activity = compacted as any;
 		} else {
 			return `skip: http-signature verification failed and ${config.ignoreApForwarded ? 'ignoreApForwarded' : 'no LD-Signature'}. keyId=${signature.keyId}`;
