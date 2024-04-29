@@ -112,6 +112,11 @@ export const tryProcessInbox = async (data: InboxJobData, ctx?: ApContext): Prom
 				return `skip: LD-Signatureの検証に失敗しました`;
 			}
 
+			const activity2 = JSON.parse(JSON.stringify(activity));
+			delete activity2.signature;
+			const compacted = await ldSignature.compact(activity2, FIXED_CONTEXT);
+			activity = compacted as any;
+
 			// もう一度actorチェック
 			if (user.uri !== activity.actor) {
 				return `skip: LD-Signature user(${user.uri}) !== activity.actor(${activity.actor})`;
@@ -122,11 +127,6 @@ export const tryProcessInbox = async (data: InboxJobData, ctx?: ApContext): Prom
 			if (await isBlockedHost(ldHost)) {
 				return `skip: Blocked instance: ${ldHost}`;
 			}
-
-			const activity2 = JSON.parse(JSON.stringify(activity));
-			delete activity2.signature;
-			const compacted = await ldSignature.compact(activity2, FIXED_CONTEXT);
-			activity = compacted as any;
 		} else {
 			return `skip: http-signature verification failed and ${config.ignoreApForwarded ? 'ignoreApForwarded' : 'no LD-Signature'}. keyId=${signature.keyId}`;
 		}
