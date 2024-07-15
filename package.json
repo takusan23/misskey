@@ -30,7 +30,6 @@
 	"dependencies": {
 		"@aws-sdk/client-s3": "3.614.0",
 		"@aws-sdk/lib-storage": "3.614.0",
-		"@aws-sdk/node-http-handler": "3.374.0",
 		"@fortawesome/fontawesome-svg-core": "1.2.36",
 		"@fortawesome/free-brands-svg-icons": "5.15.4",
 		"@fortawesome/free-regular-svg-icons": "5.15.4",
@@ -41,6 +40,7 @@
 		"@koa/router": "8.0.8",
 		"@peertube/http-signature": "1.7.0",
 		"@prezzemolo/rap": "0.1.2",
+		"@smithy/node-http-handler": "3.1.2",
 		"@swc/core": "1.4.12",
 		"@twemoji/parser": "15.1.1",
 		"animejs": "3.2.2",
